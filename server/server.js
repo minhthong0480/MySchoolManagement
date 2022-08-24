@@ -1,30 +1,32 @@
 const express = require("express");
-const authRoute = require("./routes/auth");
-const fs = require('fs')
-const cors = require('cors')
-const mongoose = require('mongoose')
-const morgan = require('morgan')
-require('dotenv').config();
-
 const app = express();
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const cors = require('cors')
 
-//db connect
-mongoose.connect(process.env.DB_CONNECT)
-.then(()=>console.log("DB Connect"))
-.catch(()=> console.log('DB connect error'))
+
+//import route
+const authRoute = require("./routes/auth");
+
+dotenv.config();
+
+
+//Connect DB
+mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
+  console.log("DB connected")
+);
 
 //middleware
-app.use(morgan('dev'))
-fs.readdirSync('./routes').map((r)=> 
-app.use('/api', require(`./routes/${r}`)))
 app.use(express.json());
-
 app.use(cors())
+ 
 app.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
 
-app.use('/api', authRoute);
+// Router middleware
+app.use("/api/", authRoute);
+// app.use("/api/posts", postRoute);
 
-const port = process.env.PORT || 5000
-app.listen(port, () => console.log(`Server running on ${port}`));
+
+app.listen(4000, () => console.log("Server is Up and Running"));

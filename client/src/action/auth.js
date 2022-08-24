@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 export const register =  (userdata, navigate) => async dispatch => {
   try {
       await axios.post(`${process.env.REACT_APP_API}/register`, userdata)
-        const res = register({
+        const res = await register({
           name: userdata.name,
           email: userdata.email,
           password: userdata.password,

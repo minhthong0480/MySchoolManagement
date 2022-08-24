@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const User = require("../model/User");
+const {register, login} = require ("../controllers/auth")
 
-//controller
-const { register } = require("../controllers/auth");
 
-// router.get("/:message", showMessage)
-router.post("/register", register);
 
-module.exports = router;
+router.post('/register', register)
+router.post('/login', login)
+
+
+  module.exports = router

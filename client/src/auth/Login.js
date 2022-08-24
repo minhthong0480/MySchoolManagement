@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react";
 import { login } from "../action/auth";
+import LoginForm from "../components/forms/LoginForm";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import LoginForm from '../components/forms/LoginForm'
 
 const Login = () => {
-  const [email, setEmail] = useState("thongtest@gmail.com");
+  const [email, setEmail] = useState("thong@gmail.com");
   const [password, setPassword] = useState("123456");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");

@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from "react";
+import RegisterForm from "../components/forms/RegisterForm";
 import { useNavigate } from "react-router-dom";
 import { register } from "../action/auth";
 import { useDispatch } from "react-redux";
-import RegisterForm from '../components/forms/RegisterForm'
 
 const Register = () => {
   const [name, setName] = useState("");
