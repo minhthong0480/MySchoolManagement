@@ -1,5 +1,5 @@
 const express = require("express");
-const router = require("./routes/auth");
+const authRoute = require("./routes/auth");
 const fs = require('fs')
 const cors = require('cors')
 const mongoose = require('mongoose')
@@ -24,7 +24,7 @@ app.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})
 })
 
-app.use('/api', router);
+app.use('/api', authRoute);
 
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server running on ${port}`));

@@ -1,31 +1,22 @@
 
-// const initialState = {
-//   auth: {},  
-//   loading: true,
-//   error: "",
-// }
 
 let userState;
 
-if(window.localStorage.getItem('auth')){
-  userState = JSON.parse(window.localStorage.getItem('auth'));
-}else {
+if (window.localStorage.getItem("auth")) {
+  userState = JSON.parse(window.localStorage.getItem("auth"));
+} else {
   userState = null;
-} 
+}
 
-
-export const authReducer = (
-  state = userState,
-  action
-) => {
+export const authReducer = (state = userState, action) => {
   switch (action.type) {
     case "LOGGED_IN_USER":
-      return { 
+      return {
         // loading: false,
         // error: "",
         // auth: action.payload
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     case "LOGOUT":
       return action.payload;
@@ -33,6 +24,3 @@ export const authReducer = (
       return state;
   }
 };
-
-// const { name, isStaff } = useSelector(state => state.user)
-// return isStaff && <></>
