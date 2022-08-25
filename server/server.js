@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require('cors')
-
+const bodyParser = require ('body-parser')
 
 //import route
 const authRoute = require("./routes/auth");
@@ -19,6 +19,7 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
 //middleware
 app.use(express.json());
 app.use(cors())
+app.use(bodyParser.json())
  
 app.get('/products/:id', function (req, res, next) {
   res.json({msg: 'This is CORS-enabled for all origins!'})

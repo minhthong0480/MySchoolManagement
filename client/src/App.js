@@ -23,6 +23,10 @@ function App() {
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           </Route>
+
+          <Route element={<PrivateRoute />}>
+            {/* <Route/> */}
+          </Route>
         </Routes>
       </Router>
     </Fragment>

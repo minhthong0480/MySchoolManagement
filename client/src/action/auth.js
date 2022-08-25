@@ -9,7 +9,7 @@ export const register =  (userdata, navigate) => async dispatch => {
           email: userdata.email,
           password: userdata.password,
         });
-        console.log("REGISTER USER ===> ", res);
+        console.log("REGISTER Teacher ===> ", res);
         //create popup for successful login
         toast.success("Register successfully. Back to Login page in 5 second", {
           autoClose: 3000,
